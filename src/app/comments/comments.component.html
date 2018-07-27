@@ -1,0 +1,42 @@
+<div class="one"><h1>{{clue['title']}}</h1></div>
+
+<div *ngIf='pic ==="image/jpeg"|| pic ==="image/png"||clue["type"] === "image/jpeg"||clue["type"] === "image/png"  ; then content else other_content'>here is ignored</div>
+<ng-template #content>
+        <div *ngIf="cover; then content else other_content">here is ignored</div>
+        <ng-template #content>
+               <img src ="{{'//i.imgur.com/'+ cover +'.jpg'}}" style="max-width: 100%; min-height: 723px;" original-title="">
+        </ng-template>
+        <ng-template #other_content>
+                <img src ="{{'//i.imgur.com/'+ id +'.jpg'}}" style="max-width: 100%; min-height: 723px;" original-title="">
+        </ng-template>
+
+</ng-template>
+<ng-template #other_content>
+        <div *ngIf="cover; then content else other_content">here is ignored</div>
+        <ng-template #content>
+                <div >
+                        <video muted autoplay="" loop="" class="" style="max-width: 100%; min-height: 728px;">
+                                <source type="video/mp4" src ="{{'//i.imgur.com/'+ cover +'.mp4'}}">
+                        </video>
+                </div>
+
+        </ng-template>
+        <ng-template #other_content>
+                <div >
+                        <video  muted autoplay="" loop="" class="" style="max-width: 100%; min-height: 728px;">
+                                <source type="video/mp4" src ="{{'//i.imgur.com/'+ id +'.mp4'}}">
+                        </video>
+                </div> </ng-template>
+</ng-template>
+<div class="search-results"
+     infiniteScroll
+     [infiniteScrollDistance]="2"
+     [infiniteScrollUpDistance]="1.5"
+     [infiniteScrollThrottle]="50"
+     (scrolled)="onScrollDown()"
+     (scrolledUp)="onScrollUp()">
+<ul class="dotted" *ngFor="let com of comments">
+        <li><span>{{com.comment}}</span><span>{{com.author}}</span></li>
+</ul>
+</div>
+

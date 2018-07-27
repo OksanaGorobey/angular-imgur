@@ -1,0 +1,27 @@
+<div class="three"><h1>Top</h1></div>
+
+
+
+<ul class="older">
+  <div class="search-results"
+       infiniteScroll
+       [infiniteScrollDistance]="2"
+       [infiniteScrollUpDistance]="1.5"
+       [infiniteScrollThrottle]="50"
+       (scrolled)="onScrollDown()"
+       (scrolledUp)="onScrollUp()">
+  <li *ngFor="let gal of gallery" >
+    <a routerLink="/comments/{{gal.id}}">
+      {{gal.title}}
+      <div *ngIf="gal.cover; then content else other_content">here is ignored</div>
+      <ng-template #content>
+        <img src ="{{'https://i.imgur.com/'+ gal.cover +'_d.jpg?maxwidth=520&amp;shape=thumb&amp;fidelity=high'}}" style="width: 260px; height: 173.418px;">
+      </ng-template>
+      <ng-template #other_content>
+        <img src ="{{'https://i.imgur.com/'+ gal.id +'_d.jpg?maxwidth=520&amp;shape=thumb&amp;fidelity=high'}}" style="width: 260px; height: 173.418px;">
+      </ng-template>
+    </a>
+
+  </li>
+  </div>
+</ul>

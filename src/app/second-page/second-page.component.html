@@ -1,0 +1,17 @@
+
+<div class="two"><h1>All Tags</h1></div>
+
+<div class="search-results"
+     infiniteScroll
+     [infiniteScrollDistance]="2"
+     [infiniteScrollUpDistance]="1.5"
+     [infiniteScrollThrottle]="50"
+     (scrolled)="onScrollDown()"
+     (scrolledUp)="onScrollUp()">
+  <a routerLink="/post/{{tag.name}}" *ngFor="let tag of tags">
+    <div class="example2">
+      <img src="{{'https://i.imgur.com/'+ tag.background_hash +'_d.jpg?maxwidth=520&amp;shape=thumb&amp;fidelity=high'}}"  width="200" height="200" class="example_beauty">
+      <span>{{tag.name}}</span>
+    </div>
+  </a>
+</div>
