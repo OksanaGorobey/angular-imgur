@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
+import {Location} from '@angular/common';
+
+
 
 @Component({
   selector: 'app-comments',
@@ -15,7 +18,9 @@ export class CommentsComponent implements OnInit {
     pic: string;
     id: string;
     constructor(private httpClient: HttpClient,
-                private route: ActivatedRoute
+                private route: ActivatedRoute,
+                private location: Location
+
     ) {
     }
     getTags( ) {
@@ -47,7 +52,9 @@ export class CommentsComponent implements OnInit {
         this.comments = this.comments.concat(this.comments);
         console.log('scrolled down!!');
     }
-
+    goBack(): void {
+        this.location.back();
+    }
     onScrollUp() {
         console.log('scrolled up!!');
     }

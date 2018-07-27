@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-third-page',
@@ -12,7 +13,8 @@ export class ThirdPageComponent implements OnInit {
     posts: any [] = [];
 
     constructor(private httpClient: HttpClient,
-                private route: ActivatedRoute
+                private route: ActivatedRoute,
+                private location: Location
     ) { }
 
     getTags() {
@@ -32,7 +34,9 @@ export class ThirdPageComponent implements OnInit {
         this.posts = this.posts.concat(this.posts);
         console.log('scrolled down!!');
     }
-
+    goBack(): void {
+        this.location.back();
+    }
     onScrollUp() {
         console.log('scrolled up!!');
     }
